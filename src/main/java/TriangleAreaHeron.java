@@ -11,8 +11,15 @@ public class TriangleAreaHeron {
         double b = sc.nextDouble();
         System.out.print("Введите значение стороны треугольника: c = ");
         double c = sc.nextDouble();
-        double p = (a+b+c)/2;
-        double S = Math.sqrt(p*(p-a)*(p-b)*(p-c));
-        System.out.print("Площадь треугольника: S = "+S);
+        double p = solveP(a,b,c);
+        double S = solveS(a,b,c,p);
+        System.out.print("Площадь треугольника: S = "+S+" "+p);
+    }
+
+    public static double solveP(double a, double b, double c) {
+        return (a+b+c)/2;
+    }
+    public static double solveS(double a, double b, double c, double p) {
+        return Math.sqrt(p*(p-a)*(p-b)*(p-c));
     }
 }
