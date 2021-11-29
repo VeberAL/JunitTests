@@ -1,21 +1,25 @@
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
-class VectorTest {
+public class VectorTest {
+    private final double Eps = 1e-6;
+    private static Vector vector;
 
+    //Выносим повторяющиеся действия в отдельный блок с before-анотацией
+    @BeforeClass
+    public static void createNewVector(){
+        vector = new Vector();
+    }
+    //При передаче в метод length пустых значений выражение должно быть 0
     @Test
     public void newVectorShouldHaveZeroLength(){
-        Vector vector = new Vector();
-        Assert.assertEquals(0,vector.length(),1e-6);
+        Assert.assertEquals(0,vector.length(),Eps);
     }
+    //При создании объекта без передачи параметров х=0,y=0
     @Test
-    public void newVectorShouldHaveZeroX(){
-        Vector vector = new Vector();
-        Assert.assertEquals(0,vector.getX(),1e-6);
-    }
-    @Test
-    public void newVectorShouldHaveZeroY(){
-        Vector vector = new Vector();
-        Assert.assertEquals(0,vector.getY(),1e-6);
+    public void newVectorShouldHaveZeroXAndZeroY(){
+        Assert.assertEquals(0,vector.getX(),Eps);
+        Assert.assertEquals(0,vector.getY(),Eps);
     }
 }
